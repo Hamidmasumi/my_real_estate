@@ -1,120 +1,369 @@
 /* تنظیمات کلی برای بدنه صفحه */
-body {
-    font-family: Arial, sans-serif; /* تعیین فونت پیش‌فرض */
-    background-color: #e0e0e0; /* رنگ پس‌زمینه کل صفحه */
-    margin: 0; /* حذف حاشیه‌های پیش‌فرض */
-    padding: 0; /* حذف فاصله داخلی پیش‌فرض */
-    direction: rtl; /* تنظیم جهت متن برای زبان فارسی */
-    padding-top: 100px; /* جلوگیری از هم‌پوشانی با هدر و منو */
+body { 
+  font-family: Arial, sans-serif; /* تعیین فونت پیش‌فرض */ 
+  background-color: #fff; /* رنگ پس‌زمینه کل صفحه */ 
+  margin: 0; /* حذف حاشیه‌های پیش‌فرض */ 
+  padding: 0; /* حذف فاصله داخلی پیش‌فرض */ 
+  direction: rtl; /* تنظیم جهت متن برای زبان فارسی */ 
+  padding-top: 100px; /* جلوگیری از هم‌پوشانی با هدر و منو */
+  overflow-y: scroll; /* اضافه کردن اسکرول بار برای کل صفحه */
 }
 
 /* 🎯 استایل هدر */
-header {
-    position: fixed; /* فیکس کردن هدر */
-    top: 0; /* چسباندن به بالای صفحه */
-    left: 0;
-    width: 100%; /* گسترش عرض */
-    background-color: black; /* پس‌زمینه مشکی */
-    color: white; /* رنگ متن */
-    padding: 10px; /* فاصله داخلی */
-    display: flex;
-    justify-content: space-between;
-    z-index: 1000; /* اطمینان از اینکه هدر روی سایر عناصر باشد */
+header { 
+  position: fixed; /* فیکس کردن هدر */ 
+  top: 0; /* چسباندن به بالای صفحه */ 
+  left: 0; 
+  width: 100%; /* گسترش عرض */ 
+  background-color: rgb(7, 7, 3); /* پس‌زمینه طلایی */ 
+  color: white; /* رنگ متن */ 
+  padding: 10px; /* فاصله داخلی */ 
+  display: flex; 
+  justify-content: space-between; 
+  z-index: 1000; /* اطمینان از اینکه هدر روی سایر عناصر باشد */
 }
 
 /* 🎯 استایل منو */
-nav {
-    position: fixed; /* فیکس کردن منو */
-    top: 50px; /* زیر هدر قرار می‌گیرد */
-    left: 0;
-    width: 100%;
-    background-color: gray; /* پس‌زمینه */
-    z-index: 999; /* یک سطح پایین‌تر از هدر */
+nav { 
+  position: fixed; /* فیکس کردن منو */ 
+  top: 50px; /* زیر هدر قرار می‌گیرد */ 
+  left: 0; 
+  width: 100%; 
+  background-color: rgb(5, 0, 0); /* پس‌زمینه */ 
+  z-index: 999; /* یک سطح پایین‌تر از هدر */
 }
 
-nav ul {
-    display: flex; /* نمایش آیتم‌های منو به‌صورت افقی */
-    list-style: none; /* حذف استایل پیش‌فرض لیست */
-    padding: 0; /* حذف فاصله داخلی پیش‌فرض */
-    justify-content: space-around; /* توزیع آیتم‌ها به‌صورت مساوی */
+nav ul { 
+  display: flex; /* نمایش آیتم‌های منو به‌صورت افقی */ 
+  list-style: none; /* حذف استایل پیش‌فرض لیست */ 
+  padding: 0; /* حذف فاصله داخلی پیش‌فرض */ 
+  justify-content: space-around; /* توزیع آیتم‌ها به‌صورت مساوی */
 }
 
-nav ul li a {
-    text-decoration: none; /* حذف خط زیر لینک‌ها */
-    color: white; /* تنظیم رنگ متن لینک‌ها */
-    padding: 10px; /* فاصله داخلی لینک‌ها */
-    display: block; /* تبدیل لینک به بلوک برای کلیک آسان‌تر */
+nav ul li a { 
+  text-decoration: none; /* حذف خط زیر لینک‌ها */ 
+  color: white; /* تنظیم رنگ متن لینک‌ها */ 
+  padding: 10px; /* فاصله داخلی لینک‌ها */ 
+  display: block; /* تبدیل لینک به بلوک برای کلیک آسان‌تر */
 }
 
+nav ul li a:hover { 
+  background-color: orange; /* پس‌زمینه نارنجی هنگام هاور */
+  border-radius: 5px; /* گرد کردن گوشه‌ها */
+  padding: 8px; /* ایجاد فاصله داخلی برای زیباتر شدن */
+  color: black; /* تغییر رنگ متن برای خوانایی بهتر */
+  transition: 0.3s; /* اضافه کردن افکت نرم */
+}
 /* 🎯 تنظیم فاصله محتوای املاک برای اینکه زیر منو مخفی نشود */
-.area {
-    margin-top: 100px; /* جلوگیری از هم‌پوشانی با هدر و منو */
-    background-color: white; /* پس‌زمینه سفید */
-    margin: 10px; /* فاصله بیرونی اطراف */
-    padding: 10px; /* فاصله داخلی */
-    border-radius: 5px; /* گوشه‌های گرد */
+.area { 
+  margin-top: 100px; /* جلوگیری از هم‌پوشانی با هدر و منو */ 
+  background-color: rgb(255, 255, 255); /* پس‌زمینه سفید */ 
+  margin: 10px; /* فاصله بیرونی اطراف */ 
+  padding: 10px; /* فاصله داخلی */ 
+  border-radius: 5px; /* گوشه‌های گرد */
 }
 
-/* 🎯 تنظیمات نمایش املاک در موبایل */
-.property-list {
-    display: flex; /* استفاده از Flexbox */
-    flex-direction: column; /* نمایش آیتم‌ها به‌صورت عمودی */
-    gap: 10px; /* فاصله بین آیتم‌ها */
-    max-height: calc(100vh - 180px); /* ارتفاع کل صفحه - هدر و فوتر */
-    overflow-y: auto; /* فعال کردن اسکرول فقط برای لیست املاک */
-    padding-bottom: 20px; /* جلوگیری از هم‌پوشانی با صفحه‌بندی */
+
+.area-title {
+  text-align: center; /* مرکزچین کردن متن */
+  margin: 0 auto; /* مرکزچین کردن کادر */
+  padding: 10px; /* فاصله داخلی برای زیبایی */
+  width: fit-content; /* عرض متن برابر با محتوای آن */
+  display: block; /* نمایش به صورت بلوک */
 }
 
-.property {
-    display: flex; /* نمایش آیتم‌های داخل هر ملک به‌صورت افقی */
-    background: #f9f9f9; /* رنگ پس‌زمینه ملک */
-    padding: 10px; /* فاصله داخلی */
-    border-radius: 5px; /* گوشه‌های گرد */
+.property { 
+  display: flex; /* نمایش آیتم‌های داخل هر ملک به‌صورت افقی */ 
+  background: #9e9e91ee; /* رنگ پس‌زمینه ملک */ 
+  padding: 10px; /* فاصله داخلی */ 
+  border: 5px solid #333; /* نمایش حاشیه برای بهتر دیده شدن */
+  border-radius: 20px; /* گوشه‌های گرد */
 }
 
-.property img {
-    width: 120px; /* عرض تصویر */
-    height: 120px; /* ارتفاع تصویر */
-    margin-left: 10px; /* فاصله از سمت چپ */
+.property img { 
+  width: 120px; /* عرض تصویر */ 
+  height: 120px; /* ارتفاع تصویر */ 
+  margin-left: 10px; /* فاصله از سمت چپ */
+  border-radius: 20px; /* گوشه‌های گرد */
 }
 
-.property-info {
-    flex: 1; /* اشغال باقی‌مانده فضای موجود */
+.property-info { 
+  flex: 1; /* اشغال باقی‌مانده فضای موجود */
+}
+
+/* افکت hover برای آگهی‌های ملک */
+.property:hover {
+  transform: scale(1.05); /* بزرگ‌نمایی آگهی به اندازه 1.05 برابر */
+  transition: transform 0.3s ease-in-out; /* انیمیشن نرم برای افکت بزرگ‌نمایی */
 }
 
 /* 🎯 ثابت کردن صفحه‌بندی در پایین صفحه */
-.pagination {
-    position: fixed; /* ثابت کردن */
-    bottom: 0; /* چسباندن به پایین صفحه */
-    left: 0;
-    width: 100%;
-    background-color: white; /* پس‌زمینه */
-    padding: 10px;
-    text-align: center; /* مرکزچین کردن */
-    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2); /* سایه‌ی بالا */
-    z-index: 1000;
+.pagination { 
+  position: fixed; /* ثابت کردن */ 
+  bottom: 0; /* چسباندن به پایین صفحه */ 
+  left: 0; 
+  width: 100%; 
+  background-color: white; /* پس‌زمینه */ 
+  padding: 10px; 
+  text-align: center; /* مرکزچین کردن */ 
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2); /* سایه‌ی بالا */
+  z-index: 1000;
 }
 
-.pagination a {
-    padding: 5px 10px; /* اندازه دکمه‌ها */
-    background: black; /* رنگ پس‌زمینه */
-    color: white; /* رنگ متن */
-    text-decoration: none; /* حذف خط زیر لینک‌ها */
-    margin: 5px; /* فاصله بین دکمه‌ها */
+.pagination a { 
+  padding: 5px 10px; /* اندازه دکمه‌ها */ 
+  background: black; /* رنگ پس‌زمینه */ 
+  color: white; /* رنگ متن */ 
+  text-decoration: none; /* حذف خط زیر لینک‌ها */ 
+  margin: 5px; /* فاصله بین دکمه‌ها */
+}
+
+
+/* 🎯 استایل برای ویندوز و آیپد */
+@media (min-width: 768px) {
+  .filter-container { 
+    width: 280px; /* عرض کادر فیلتر*/ 
+    height: 700px !important; 
+    position: absolute; /* ثابت یا متغیر بودن کادر فیلتر */ 
+    top: 130px; 
+    right: 10px; /* فاصله از سمت راست */ 
+    display: flex; 
+    flex-direction: column;
+   /* overflow-y: auto; /* فعال کردن اسکرول در صورت نیاز */ 
+   /* max-height: calc(100vh - 180px);  محدود کردن ارتفاع */
+    text-align: center; /* وسط‌چین کردن متن‌ها */
+  } 
+}
+
+
+/* 🚀 تنظیمات برای ویندوز (۱۰۲۴ پیکسل به بالا) */
+@media (min-width: 1024px) { 
+  .property-list { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); /* نمایش سه ستون در ویندوز */ 
+    gap: 15px; 
+    margin-right: 320px; 
+  }
 }
 
 /* 🚀 تنظیمات برای تبلت (۷۶۸ پیکسل به بالا) */
-@media (min-width: 768px) {
-    .property-list {
-        display: grid; /* نمایش املاک در قالب گرید */
-        grid-template-columns: repeat(2, 1fr); /* دو ستون مساوی */
-        gap: 15px; /* فاصله بین آیتم‌ها */
-    }
+@media (min-width: 768px) { 
+  .property-list { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px; 
+    margin-right: 320px; 
+  }
 }
 
-/* 🚀 تنظیمات برای ویندوز (۱۰۲۴ پیکسل به بالا) */
-@media (min-width: 1024px) {
-    .property-list {
-        grid-template-columns: repeat(3, 1fr); /* نمایش سه ستون در ویندوز */
+
+
+/* استایل کانتینر فیلتر */
+.filter-container {
+  background-color: #f8f9fa;
+  padding: 20px;
+  margin: 30px 0;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(229, 245, 11, 0.1);
+  
+}
+
+
+.filter-container label,
+.filter-container select,
+.filter-container input {
+  display: block; /* هر عنصر به صورت بلوکی نمایش داده شود */
+  width: 100%; /* عرض کامل برای هر فیلد */
+  margin-bottom: 10px; /* فاصله بین فیلدها */
+}
+
+/* استایل باکس فیلتر */
+.filter-box {
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  height: 700px;
+}
+
+/* فاصله بین فیلترها و منو */
+.filter-container {
+  margin-top: 50px;
+}
+
+/* استایل دکمه انتخاب امکانات */
+.checkbox-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.dropdown-btn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 200px;
+  border-radius: 5px;
+  top: 40px;
+  left: 0;
+  z-index: 100;
+}
+
+.dropdown-content label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.dropdown-content button {
+  background-color: #28a745;
+  color: white;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* استایل دکمه [جستجو] امکانات */
+.search-button-container {
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 100%;
+  text-align: center;
+}
+
+/* تنظیمات مربوط به نمایش در موبایل */
+@media screen and (max-width: 768px) {  
+    /* هدر ثابت */
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgb(7, 7, 3);
+        color: white;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        z-index: 1000;
+    }
+
+    /* منو ناوبری ثابت */
+    nav {
+        position: fixed;
+        top: 50px;
+        left: 0;
+        width: 100%;
+        background-color: rgb(5, 0, 0);
+        z-index: 999;
+    }
+
+    /* دکمه جستجو ثابت و چسبیده به زیر منو */
+    #search-button {
+        position: fixed;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        background-color: yellow;
+        color: black;
+        padding: 10px;
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 998;
+    }
+
+    /* کادر جستجو که ابتدا مخفی است */
+    #search-box {
+        display: none;
+        position: fixed;
+        top: 140px;
+        left: 0;
+        width: 100%;
+        height: 50vh;
+        background-color: white;
+        overflow-y: auto;
+        z-index: 997;
+        padding: 10px;
+        border-bottom: 2px solid black;
+    }
+
+    /* نمایش کادر جستجو زمانی که کاربر روی دکمه جستجو کلیک کند */
+    #search-box.active {
+        display: block;
+    }
+
+    /* استایل لیست املاک */
+    .property-list { 
+      display: flex; /* استفاده از Flexbox */ 
+      flex-direction: column; /* نمایش آیتم‌ها به‌صورت عمودی */ 
+      gap: 10px; /* فاصله بین آیتم‌ها */ 
+      max-height: calc(100vh - 180px); /* ارتفاع کل صفحه - هدر و فوتر */ 
+    /*  overflow-y: auto; /* فعال کردن اسکرول فقط برای لیست املاک */ 
+      padding-bottom: 20px; /* جلوگیری از هم‌پوشانی با صفحه‌بندی */
+    }
+
+    .date-posted {  
+      display: none;  
+  }  
+    
+    .property { 
+      display: flex; /* نمایش آیتم‌های داخل هر ملک به‌صورت افقی */ 
+      background: #f9f9f9; /* رنگ پس‌زمینه ملک */ 
+      padding: 5px; /* فاصله داخلی */ 
+      border-radius: 5px; /* گوشه‌های گرد */
+    }
+    
+    .property img { 
+      width: 120px; /* عرض تصویر */ 
+      height: 120px; /* ارتفاع تصویر */ 
+      margin-left: 10px; /* فاصله از سمت چپ */
+    }
+    
+    .property-info { 
+      flex: 1; /* اشغال باقی‌مانده فضای موجود */
+    }
+
+    .property p {
+      margin-bottom: 5px; /* کاهش فاصله بین پاراگراف‌ها */
+      padding: 0; /* حذف فاصله داخلی */
+  }
+
+    /* تنظیمات اسکرول برای کادرهای چک‌باکس */
+    .filter-options {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    /* شماره‌بندی صفحه ثابت در پایین */
+    .pagination {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        padding: 10px;
+        text-align: center;
+        z-index: 1000;
     }
 }

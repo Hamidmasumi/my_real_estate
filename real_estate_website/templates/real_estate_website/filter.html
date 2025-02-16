@@ -1,0 +1,86 @@
+{% load static %}
+<div class="container">
+    <!-- فیلترها در یک باکس مجزا -->
+    <aside class="filter-container">
+        <div class="filter-box">
+            <h3>فیلتر جستجو</h3>
+            <form method="GET" action="{% url 'index' %}">
+                <label for="ad_type">نوع آگهی:</label>
+                <select name="ad_type" id="ad_type">
+                    <option value="">همه</option>
+                    {% for value, label in AD_TYPES %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="property_type">نوع ملک:</label>
+                <select name="property_type" id="property_type">
+                    <option value="">همه</option>
+                    {% for value, label in PROPERTY_TYPES %}
+                        <option value="{{ value }}">{{ label }}</option>
+                    {% endfor %}
+                </select>
+
+                <label>متراژ زمین (متر مربع):</label>
+                <input type="number" name="land_size_min" placeholder="حداقل">
+                <input type="number" name="land_size_max" placeholder="حداکثر">
+
+                <!-- فیلدهای جدید متراژ -->
+                <label>متراژ سوله (متر مربع):</label>
+                <input type="number" name="warehouse_size_min" placeholder="حداقل">
+                <input type="number" name="warehouse_size_max" placeholder="حداکثر">
+
+                <label>متراژ اداری (متر مربع):</label>
+                <input type="number" name="office_size_min" placeholder="حداقل">
+                <input type="number" name="office_size_max" placeholder="حداکثر">
+
+                <label>متراژ بنا (متر مربع):</label>
+                <input type="number" name="building_size_min" placeholder="حداقل">
+                <input type="number" name="building_size_max" placeholder="حداکثر">
+
+                <label>قیمت کل (تومان):</label>
+                <input type="number" name="total_price_min" placeholder="حداقل">
+                <input type="number" name="total_price_max" placeholder="حداکثر">
+
+                <!-- فیلدهای جدید قیمت -->
+                <label>ودیعه (تومان):</label>
+                <input type="number" name="deposit_min" placeholder="حداقل">
+                <input type="number" name="deposit_max" placeholder="حداکثر">
+
+                <label>اجاره (تومان):</label>
+                <input type="number" name="rent_min" placeholder="حداقل">
+                <input type="number" name="rent_max" placeholder="حداکثر">
+
+                <!-- گزینه‌های چک‌باکس در یک باکس جداگانه -->
+                <div class="checkbox-dropdown">
+                    <button type="button" class="dropdown-btn" onclick="toggleDropdown('facilitiesDropdown')">انتخاب امکانات</button>
+                    <div class="dropdown-content" id="facilitiesDropdown">
+                        {% for key, value in facilities.items %}
+                            <label>
+                                <input type="checkbox" name="facilities" value="{{ key }}"> {{ value }}
+                            </label>
+                        {% endfor %}
+                        <button type="button" onclick="closeDropdown('facilitiesDropdown')">تأیید</button>
+                    </div>
+                </div>
+                
+                <!-- محل -->
+                <div class="checkbox-dropdown">
+                    <button type="button" class="dropdown-btn" onclick="toggleDropdown('locationDropdown')">محل</button>
+                    <div class="dropdown-content" id="locationDropdown">
+                        {% for loc_key, loc_value in locations %}
+                            <label>
+                                <input type="checkbox" name="location"  value="{{ loc_key }}"> {{ loc_value }}
+                            </label>
+                        {% endfor %}
+                        <button type="button" onclick="closeDropdown('locationDropdown')">تأیید</button>
+                    </div>
+                </div>
+                <div class="search-button-container">
+                    <button type="submit">جستجو</button>
+                </div>
+            </form>
+        </div>
+    </aside>
+</div>
+<script src="{% static 'js/filter.js' %}"></script>

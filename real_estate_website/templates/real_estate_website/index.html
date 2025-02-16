@@ -27,6 +27,9 @@
         </ul>
     </nav>
 
+{% include "real_estate_website/filter.html" %}
+<button id="filter-btn" class="filter-button">جستجو</button>
+
     <!-- لیست املاک -->
     <section class="area">
         <h2 class="area-title">املاک موجود</h2>
@@ -61,8 +64,8 @@
 {% endif %}
             <p>📍 {{ property.get_location_display }}</p>
             {% load jalali_converter %}
-                <p>📅 تاریخ ثبت: {{ property.created_at|to_jalali }}</p>
-		<p>✏️ آخرین بروزرسانی: {{ property.updated_at|to_jalali }}</p>
+            <p class="date-posted">📅 تاریخ ثبت: {{ property.created_at|to_jalali }}</p>
+            <p>✏️ آخرین بروزرسانی: {{ property.updated_at|to_jalali }}</p>
 
         </div>
     </div>
@@ -78,6 +81,5 @@
         <a href="#">4</a> <!-- لینک به صفحه ۴ -->
         <a href="#">5</a> <!-- لینک به صفحه ۵ -->
     </div>
-
 </body>
 </html>
