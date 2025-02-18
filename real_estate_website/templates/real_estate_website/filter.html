@@ -1,7 +1,7 @@
 {% load static %}
 <div class="container">
     <!-- فیلترها در یک باکس مجزا -->
-    <aside class="filter-container">
+    <aside class="filter-container" id="filter-box">
         <div class="filter-box">
             <h3>فیلتر جستجو</h3>
             <form method="GET" action="{% url 'index' %}">
@@ -25,7 +25,6 @@
                 <input type="number" name="land_size_min" placeholder="حداقل">
                 <input type="number" name="land_size_max" placeholder="حداکثر">
 
-                <!-- فیلدهای جدید متراژ -->
                 <label>متراژ سوله (متر مربع):</label>
                 <input type="number" name="warehouse_size_min" placeholder="حداقل">
                 <input type="number" name="warehouse_size_max" placeholder="حداکثر">
@@ -42,7 +41,6 @@
                 <input type="number" name="total_price_min" placeholder="حداقل">
                 <input type="number" name="total_price_max" placeholder="حداکثر">
 
-                <!-- فیلدهای جدید قیمت -->
                 <label>ودیعه (تومان):</label>
                 <input type="number" name="deposit_min" placeholder="حداقل">
                 <input type="number" name="deposit_max" placeholder="حداکثر">
@@ -76,6 +74,7 @@
                         <button type="button" onclick="closeDropdown('locationDropdown')">تأیید</button>
                     </div>
                 </div>
+
                 <div class="search-button-container">
                     <button type="submit">جستجو</button>
                 </div>
@@ -83,4 +82,5 @@
         </div>
     </aside>
 </div>
+
 <script src="{% static 'js/filter.js' %}"></script>
