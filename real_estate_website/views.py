@@ -1,16 +1,18 @@
 from django.shortcuts import render
 from .models import Property
 from django.db import models
-from django.db.models  import Q
+from django.db.models import Q
 
 def index(request):
-
     
     # دیکشنری تبدیل نام‌های انگلیسی به فارسی از مدل
     location_dict = dict(Property.LOCATION_CHOICES)
     
     # دریافت لیست املاک فعال
     properties = Property.objects.filter(available=True)
+
+    # دریافت فقط املاک ویژه برای اسلایدر
+    special_properties = Property.objects.filter(special_property=True)
 
     # دریافت مناطق (بدون تکرار) و تبدیل به فارسی
     locations = list(Property.objects.values_list('location', flat=True).distinct())
@@ -79,7 +81,7 @@ def index(request):
     if rent_max:
         properties = properties.filter(rent__lte=rent_max)
 
-     # فیلتر کردن املاک بر اساس امکانات انتخاب‌شده
+    # فیلتر کردن املاک بر اساس امکانات انتخاب‌شده
     if selected_facilities:
         facility_filter = Q()
         for facility in selected_facilities:
@@ -89,10 +91,38 @@ def index(request):
     # فیلتر محل (چک‌باکس OR)
     if selected_locations:
         properties = properties.filter(location__in=selected_locations)
+    # اضافه کردن امکانات به هر ملک
+    for property in properties:
+        property.facilities = []
+        if property.has_crane:
+            property.facilities.append('جرثقیل')
+        if property.has_stage:
+            property.facilities.append('سکو')
+        if property.has_100amp:
+            property.facilities.append('برق تا ۱۰۰ آمپر')
+        if property.has_200amp:
+            property.facilities.append('برق تا ۲۰۰ آمپر')
+        if property.has_400amp:
+            property.facilities.append('برق بالای ۴۰۰ آمپر')
+        if property.in_complex:
+            property.facilities.append('در مجموعه/شهرکی')
+        if property.independent:
+            property.facilities.append('مستقل')
+        if property.on_road:
+            property.facilities.append('بر جاده')
+        if property.showroom:
+            property.facilities.append('شوروم')
+        if property.pharmaceutical:
+            property.facilities.append('دارویی')
+        if property.special_property:
+            property.facilities.append('ملک ویژه')
+        if property.automotive:
+            property.facilities.append('خودرویی / نمایندگی')
 
     # ارسال داده به قالب
     context = {
         'properties': properties,
+        'special_properties': special_properties,  # املاک ویژه برای اسلایدر
         'locations': locations,  # حالا شامل کلید و مقدار فارسی است
         'facilities': facilities,
         'AD_TYPES': Property.AD_TYPES,

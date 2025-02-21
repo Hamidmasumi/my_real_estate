@@ -66,8 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
-         // اسکریپت مربوط به اسلایدر
-         const slider = document.querySelector(".slider");
+        // اسکریپت مربوط به اسلایدر
+        const slider = document.querySelector(".slider");
         const slides = document.querySelectorAll(".slide");
 
         if (!slider || slides.length === 0) {
@@ -80,38 +80,20 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let index = 0;
         let totalSlides = slides.length;
-        let slideWidth = slides[0].offsetWidth + 20; // فرض بر این است که 20 پیکسل فاصله بین اسلایدهاست
-
-        // کپی کردن اسلایدها برای ایجاد اثر چرخه بی‌نهایت
-        slider.innerHTML += slider.innerHTML;
-
-        function initializeAccordion() {
-            const specialButtons = document.querySelectorAll(".special-button");
-            specialButtons.forEach(button => {
-                button.addEventListener("click", function () {
-                    this.classList.toggle("active");
-                    const panel = this.nextElementSibling;
-                    panel.style.display = (panel.style.display === "block") ? "none" : "block";
-                });
-            });
-        }
+        let slideInterval;
 
         function moveSlider() {
             index++;
             slider.style.transition = "transform 0.5s ease-in-out";
-            slider.style.transform = `translateX(-${index * slideWidth}px)`;
+            slider.style.transform = `translateX(-${index * (slides[0].offsetWidth + 20)}px)`;
 
             if (index >= totalSlides) {
-                slider.addEventListener('transitionend', resetSlider);
+                setTimeout(() => {
+                    slider.style.transition = "none";
+                    slider.style.transform = "translateX(0px)";
+                    index = 0;
+                }, 500);
             }
-        }
-
-        function resetSlider() {
-            slider.removeEventListener('transitionend', resetSlider);
-            slider.style.transition = "none";
-            slider.style.transform = `translateX(0px)`;
-            index = 0;
-            initializeAccordion();
         }
 
         function startSlider() {
@@ -127,7 +109,6 @@ document.addEventListener("DOMContentLoaded", function () {
         slider.addEventListener("mouseenter", stopSlider);
         slider.addEventListener("mouseleave", startSlider);
 
-        initializeAccordion(); // مقداردهی اولیه دکمه‌های آکاردئونی
         startSlider();
     } catch (error) {
         console.error("Error in script:", error);
